@@ -1,0 +1,38 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/projects">{{id}}</a></li>          	
+        <li class="active">sprints</li>
+    </ul>
+</div>
+<div class="viewsprint-content container2">
+	<div class="alert alert-success project-added ng-binding ng-scope" role="alert" ng-if="newSprintId">
+		A Sprint with id '{{ newSprintId }}' was saved successfully.<button class="close project-close" ng-click="removeSuccessSprint()">x</button>
+	</div>
+	<div class="tableoverflow">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<th>Name </th>
+				<th>Start date</th>
+				<th>End date</th>
+				<th>Capacity</th>
+				<th>Tools</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="sprint in sprints">
+					<td>{{ sprint.sprint_name }}</td>
+					<td>{{ sprint.start_date | date:"dd/MM/yyyy" }}</td>
+					<td>{{ sprint.end_date | date:"dd/MM/yyyy" }}</td>
+					<td>{{ sprint.capacity }}</td>
+					<td><a href="#/projects/{{id}}/sprints/{{sprint._id}}/tasks" class="btn btn-default">Tasks</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-show="noItemsLength(sprints.length)" class="noItemsDiv">No items in the sprints</div>
+	</div>
+	<div class="viewsprint-newuser">
+		<a href="#/projects/{{id}}/sprints/new" class="btn btn-default">New sprint</a>
+	</div>
+</div>
+ 

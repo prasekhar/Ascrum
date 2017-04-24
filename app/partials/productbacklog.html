@@ -1,0 +1,40 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/projects/">{{project_id}}</a></li> 
+        <li><a href="#/projects/{{project_id}}/productbacklog">product backlog</a></li>           	
+        <li class="active">new</li>
+    </ul>
+</div>
+<div id="productbacklog" class="container2">
+	<h1>Product backlog Item</h1>
+	<form name="productbacklogform">
+		 <div id="backlog">
+			<div class="form-group col-md-8">
+				<label for="productbacklogname">Name</label>
+				<input type="text" class="form-control" id="productbacklogname" ng-model="productbacklog.productbacklog_name" required name="name">
+			</div>
+			<div class='clear'></div>
+			<div class="form-group col-md-8">
+				<label for="story">User story</label>
+				<textarea class="form-control" id="story" ng-model="productbacklog.user_story" required name="userstory"></textarea>
+			</div>
+			<div class='clear'></div>
+			<div class="form-group  col-md-3">
+				<label for="priority">Priority</label>
+				<input class="form-control" type="number" id="priority" ng-model="productbacklog.priority" required name="priority" />
+				<small ng-show="productbacklogform.priority.$error.number">priority should be a number</small>
+		 	</div>
+		 	<div class='clear'></div>
+			<div class="form-group col-md-3">
+				 <label for="estimation">Estimation</label>
+				 <input class="form-control" type="number" id="estimation" ng-model="productbacklog.estimation" required name="estimation">
+				 <small ng-show="productbacklogform.estimation.$error.number">estimation should be a number</small>
+			 </div>
+			 <div class='clear'></div>
+		 </div>
+		 <input type="button" class="btn btn-primary" value="Save" ng-click="addProductBacklog(project_id)" ng-disabled="productbacklogform.name.$error.required || productbacklogform.userstory.$error.required || productbacklogform.priority.$error.required || productbacklogform.estimation.$error.required || productbacklogform.priority.$error.number || productbacklogform.estimation.$error.required">
+		 <input type="reset" class="btn btn-warning" value="Discard Changes">
+	</form>
+</div>

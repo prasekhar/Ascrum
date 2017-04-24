@@ -1,0 +1,59 @@
+{
+  "name": "Ascrum",
+  "description": "A project managament application using MEAN Stack",
+  "version": "1.0",
+  "keywords": [
+    "Project Management",
+    "Ascrum"
+  ],
+  "contributors": [
+    {
+      "name": "Pranathi",
+      "email": "pranathi.dharmareddy@cognizant.com",
+      "web": ""
+    },
+    {
+      "name": "Appala Naidu",
+      "email": "appalanaidu.bheemavarapu@cognizant.com",
+      "web": ""
+    },
+    {
+      "name": "Raja Sekhar",
+      "email": "rajasekharareddy.karri@cognizant.com",
+      "web": ""
+    },
+    {
+      "name": "Mahathi",
+      "email": "mahathi.yerragunta@cognizant.com",
+      "web": ""
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Dasthagiri",
+      "email": "dastagirireddy.ramireddy@cognizant.com",
+      "web": ""
+    },
+    {
+      "name": "Chaitanya",
+      "email": "chaitanyakumar.malladi@cognizant.com",
+      "web": ""
+    }
+  ],
+  "demos": [
+    "http://127.0.0.1:3000/"
+  ],
+  "devDependencies": {
+    "express": "~4.12.3",
+    "mongoose": "~4.0.2",
+    "client-sessions": "~0.7.0",
+    "body-parser": "~1.12.3",
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-uglify": "~0.9.1"
+  },
+  "bugs": {
+    "web": ""
+  },
+  "homepage": "http://127.0.0.1:3000/"
+}

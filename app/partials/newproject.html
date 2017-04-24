@@ -1,0 +1,75 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+        <li></li>
+        <li><a href="#/admin">admin</a></li>
+        <li><a href="#/admin/projects">projects</a></li>        
+        <li class="active">new</li>
+    </ul>
+</div>
+
+<section id='project' class="container2">
+    <h1>Project</h1>
+    <form name="projectForm">
+        <div class='newproject'>
+            <div class="new-project-left col-md-5">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name"  ng-model="project.project_name" required name="name"/>
+                </div>
+                <div class="form-group">
+                    <label for="descp">Description</label>
+                    <textarea class="form-control" id="description" ng-model="project.description" required name="textarea"></textarea>
+                </div>
+            </div>
+            <div class="new-project-right col-md-6">
+                <div class="form-group">
+                    <label for="owner">Product Owner</label>
+                    <select class="form-control" id="owner" ng-model="project.owner" required name="owner">
+                        <option ng-repeat="admin in admins">{{ admin.firstname + " " + admin.lastname + " (" + admin.email + ") " }}</option>
+                    </select>                 
+                </div>
+                <div class="form-group">
+                    <label for="role">My role(s)</label>
+                    <select class="form-control" id="role" ng-model="project.role" required name="role">
+                        <option>SM</option>
+                        <option>PO</option>
+                        <option>Testing</option>
+                        <option>Accessbility</option>
+                        <option>Developer</option>
+                 </select>
+                 </div>
+                 <div class="form-group"></div>
+                 <label for="user">Development Team</label>
+                 <div class="tableoverflow">
+                     <table class="table table-bordered" id="role">
+                        <thead>
+                            <tr>
+                                <th class="col-md-11">User</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="arr in developers track by $index">
+                                <td>{{arr}}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="user" ng-model="project.user">
+                                            <option ng-repeat="user in users">{{ user.firstname +" "+ user.lastname +" ("+user.email +") "  }}</option>
+                                        </select>
+                                        <small style="color:red" ng-show="userExist">User exists, plese try another user</small>
+                                    </div>
+                                </td>
+                                <td><input class="btn btn-default" type="button" value="Add" ng-click="userArray()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Save" ng-click="saveProject()" ng-disabled="projectForm.name.$error.required || projectForm.textarea.$error.required || projectForm.owner.$error.required || projectForm.role.$error.required || userselection">
+        <input class="btn btn-warning" type="reset" value="Revert Changes">
+    </form>
+</section>

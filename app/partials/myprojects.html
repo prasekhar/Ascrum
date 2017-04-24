@@ -1,0 +1,29 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li class="active">projects</li>
+    </ul>
+</div>
+<div id="manageprojects" class="container2">
+	<div class="tableoverflow">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="col-sm-3">Name</th>
+					<th class="col-sm-5">Description</th>
+					<th class="col-sm-2">My Role(s)</th>
+					<th class="col-sm-2">Tools</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="project in projectlist">
+					<td>{{ project.project_name }}</td>
+					<td>{{ project.description }}</td>
+					<td>{{ "[\"" + project.role + "\"]" }}</td>
+					<td><a href="#/projects/{{project._id}}/productbacklog">Product Backlogs</a><span>&nbsp;|&nbsp;</span><a href="#/projects/{{project._id}}/sprints">Sprints</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-show="noItemsLength(projectlist.length)" class="noItemsDiv">No items in the projects</div>
+	</div>
+</div>

@@ -1,0 +1,82 @@
+ <div class="bs-example">
+    <ul class="breadcrumb">
+        <li></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/projects">{{id}}</a></li>
+        <li ><a href="#/projects/{{id}}/sprints">sprints</a></li>
+        <li class="active">new</li>
+    </ul>
+</div>
+<div class="sprint-content container2">
+    <form name="newsprintform">
+    <div class="sprint-header">
+        <h1>Sprint</h1>
+    </div>
+    <div class="sprint-form">
+            <div class="sprint-form-left col-md-5">
+                <div class="form-group">
+                         <label for="sprint-name">Name</label>
+                         <input type="text" id="sprint-name"  class="form-control" ng-model="sprint.sprint_name" required name="name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sprint-capicity">Capacity</label>
+                    <input type="number" id="sprint-capicity"  class="form-control" ng-model="sprint.capacity" required name="capacity">
+                    <small ng-show="newsprintform.capacity.$error.number">priority should be a number</small>
+                </div>
+            </div>
+            <div class="sprint-form-right col-md-3">
+                <div class="form-group">
+                    <label for="sprint-sdate">Start date</label>
+                    <input type="date" id="sprint-sdate" class="form-control" ng-model="sprint.start_date" required name="startdate">
+                </div>
+                 <div class="form-group">
+                     <label for="sprint-edate">End date</label>
+                     <input type="date" id="sprint-edate" class="form-control" ng-model="sprint.end_date" required name="enddate">
+                </div>
+            </div> 
+    </div>
+
+    <div class="sprint-backlog-header">
+        <h2>Sprint Backlog</h2>
+    </div>
+    <div class="sprint-backlog">
+       
+            <div class="sprint-backlog-table col-md-6">
+                <p>Currently in the sprint's backlog</p>
+                <div class="tableoverflow">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th id="sprint-header-name">Name</th>
+                                <th>Estimation</th>
+                                <th id="sprint-header-tools">Tools</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="sprint-product-backlog col-md-5">
+                <p>Product backlog</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th id="sprint-header-name">Name</th>
+                                    <th>Estimation</th>
+                                    <th id="sprint-header-tools">Tools</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    
+                            </tbody>
+                        </table>
+            </div>
+    </div>
+    <div class="sprint-buttons">
+        <input type="button" value="Save" class="btn btn-primary" ng-click="addSprint(id)" ng-disabled="newsprintform.capacity.$invalid || newsprintform.name.$invalid || newsprintform.startdate.$invalid || newsprintform.enddate.$invalid ">
+         <input type="reset" value="Revert Changes" class="btn btn-warning">
+    </div>
+    </form>
+</div>

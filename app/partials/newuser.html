@@ -1,0 +1,82 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li><a href="#/admin">admin</a></li>
+        <li><a href="#/admin/users">users</a></li>           	
+        <li class="active">new</li>
+    </ul>
+</div>
+
+<div class="user-content container2">
+
+	<div class="user-header">
+		<h1>User</h1>
+	</div>
+	<div class="user-form">	
+		<form ng-controller="addNewUserController" name="userform">
+			<div class="user-form-left col-md-8">
+				<div class="alert alert-danger" role="alert" ng-show="userExist">
+					User alerady exists
+					<span class="glyphicon glyphicon-remove cts-danger-remove" aria-hidden="true" ng-click="closeDangerAlert()"></span>
+				</div>					
+				<div class="form-group col-md-4">
+					<label for="email">E-mail</label>
+					<input type="email" id="email" class="form-control" ng-model="newUser.email" name="email" required/>					
+				</div>	
+				<span class="cts-validation" ng-show="userform.email.$dirty && userform.email.$invalid">	   
+						 <span ng-show="userform.email.$error.required">This field is required</span>
+						 <span ng-show="userform.email.$error.email">email is invalid</span>
+				</span>
+				<div class="clear"></div>	
+				<div class="form-group col-md-4">
+					<label for="lastname">Last Name</label>
+					<input type="text" id="lastname" class="form-control" name="lastname" ng-model="newUser.lastname" required/>
+				</div>
+				<span class="cts-validation" ng-show="userform.lastname.$dirty && userform.lastname.$invalid">
+					<span ng-show='userform.lastname.$error.required'>This field is required</span>
+				</span>
+				<div class="clear"></div>	
+				<div class="form-group col-md-4">
+					<label for="firstname">First Name</label>
+					<input type="text" id="firstname" class="form-control" name="firstname" ng-model="newUser.firstname" required/>					
+				</div>
+				<span class="cts-validation" ng-show="userform.firstname.$dirty && userform.firstname.$invalid">
+					<span ng-show='userform.firstname.$error.required'>This field is required</span>
+				</span>
+				<div class="clear"></div>	
+				<div class="form-group col-md-4">
+					<label for="password">Password</label>
+					<input type="password" id="password" class="form-control" ng-model="newUser.password" name="password" ng-maxlength="20" ng-minlength="6" required />						
+				</div>
+				<span class="cts-validation" ng-show="userform.password.$dirty && userform.password.$invalid">
+					<span ng-show='userform.password.$error.required' >This field is required</span>
+					<span ng-show='userform.password.$error.minlength'>password length is short</span>
+					<span ng-show='userform.password.$error.maxlength'>password length is too long</span>
+				</span>
+				<div class="clear"></div>	
+				<div class="form-group col-md-4">
+					<label for="repeatpassword">Password(Repeat)</label>
+					<input type="password" id="repeatpassword" class="form-control" name="reqpwd" ng-model="password2" ng-blur="matchPassword()"required />
+					<small ng-show="visible">Password didn't match</small>
+				</div>
+				<span class="cts-validation" ng-show="userform.reqpwd.$dirty && userform.reqpwd.$invalid">
+					<span ng-show='userform.reqpwd.$error.required'>This field is required</span>
+				</span>
+				<div class="clear"></div>	
+				<div class="form-group col-md-4">
+					<div class="checkbox">
+						<div><label for="admin"> Admin <input type="checkbox" id="admin" ng-model="newUser.is_admin"></label></div>
+					</div>
+				</div>
+				</div>
+				<div class="user-form-right">
+					<img src="../images/userlogo.jpg" alt=" ">
+				</div>	
+				<div class="clear"></div>
+				<div class="user-buttons">
+					<input type="submit" value="Save" class="btn btn-primary" ng-click="addNewUser()" ng-disabled="userform.password.$invalid || userform.email.$invalid || userform.firstname.$invalid || userform.lastname.$invalid || userform.reqpwd.$invalid || visible">
+					<input type="reset" value="Revert Changes" class="btn btn-warning">
+				</div> 
+		</form>
+	</div>
+</div>

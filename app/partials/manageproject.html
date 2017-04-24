@@ -1,0 +1,32 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+    	<li><a href="#/admin">admin</a></li>
+        <li class="active">projects</li>
+    </ul>
+</div>
+<div id="manageprojects" class="container2">
+	<div class="alert alert-success project-added" role="alert" ng-if="projectId">
+		A Project with id '{{projectId}}' was saved successfully.<button class="close project-close" ng-click="saveProjectClose()">x</button>
+	</div>
+	<div class="tableoverflow">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="project in projects">
+					<td>{{ project.project_name }}</td>
+					<td>{{ project.description }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-show="noItemsLength(projects.length)" class="noItemsDiv">No items in the projects</div>
+    </div>
+	<div class="add-project">
+		<a class='btn btn-default' href="#/admin/projects/new">New Project</a>
+	</div>
+</div>

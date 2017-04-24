@@ -1,0 +1,26 @@
+<section>
+	<div class="bs-example">
+	    <ul class="breadcrumb">
+	    	<li></li>
+	        <li class="active">projects</li>
+	    </ul>
+	</div>
+	<div class="container2 projectInfo">
+		<h1>Projects Info</h1>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="project in projects">
+					<td>{{ project.project_name }}</td>
+					<td>{{ project.description }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-show="noItemsLength(projects.length)" class="noItemsDiv">No items in the projects</div>
+	</div>
+</section>

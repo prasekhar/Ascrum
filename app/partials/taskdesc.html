@@ -1,0 +1,38 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/projects">{{project_id}}</a></li> 
+        <li><a href="#/projects/{{project_id}}/sprints">sprints</a></li>           	
+        <li><a href="#/projects/{{project_id}}/sprints">{{sprint_id}}</a></li>           	
+        <li class="active">tasks</li>
+    </ul>
+</div>
+<div class="taskdesc-content container2">
+ 	<div class="alert alert-success project-added ng-binding ng-scope" role="alert" ng-if="newTaskId">
+		A Sprint with id '{{ newTaskId }}' was saved successfully.<button class="close project-close" ng-click="removeNewTaskId()">x</button>
+	</div>   	
+	<div class="tableoverflow">
+	    <table class="table table-striped table-bordered">
+		    <thead>
+			     <th class="col-md-8">Name</th>
+				 <th class="col-md-1">Estimation</th>
+				 <th class="col-md-1">Remaining</th>
+				 <th class="col-md-2">Tools</th>
+		
+		    </thead>
+		    <tbody>
+		        <tr ng-repeat="task in taskList">
+					<td>{{ task.task_name }}</td>
+					<td>{{ task.estimation }}</td>
+					<td>{{ task.remaining }}</td>
+					<td>{{ task.assigned_to }}</td>
+				</tr>		
+		   </tbody>
+		</table>
+		<div ng-show="noItemsLength(taskList.length)" class="noItemsDiv">No items in the tasks</div>
+	</div>
+	<div class="taskdesc-newtask">
+	    <a href="#/projects/{{project_id}}/sprints/{{sprint_id}}/tasks/new" class="btn btn-default">New Task</a>
+	</div>
+</div>

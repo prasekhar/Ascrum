@@ -1,0 +1,65 @@
+<div class="bs-example">
+    <ul class="breadcrumb">
+    	<li></li>
+        <li><a href="#/projects">projects</a></li>
+        <li><a href="#/projects">{{project_id}}</a></li> 
+        <li><a href="#/projects/{{project_id}}/sprints">sprints</a></li>           	
+        <li><a href="#/projects/{{project_id}}/sprints">{{sprint_id}}</a></li>          	
+        <li><a href="#/projects/{{project_id}}/sprints/{{sprint_id}}/tasks">tasks</a></li>           	
+        <li class="active">new</li>
+    </ul>
+</div>
+<div id="newtask" class="container2">
+	<form name="newtaskform">
+		<div class="newtask-form">
+			<div class="newtask-left col-md-5">
+				<div class="form-group">
+					   <label>Name</label>
+					   <input type="text" id="name"  class="form-control" ng-model="newTask.task_name" required name="name"/>
+				</div>
+				<div class="form-group">
+					 <label>Product Backlog Item</label>
+					 <select id="productBacklog"  class="form-control" ng-model="newTask.productbacklog_name" required name="productbacklog">
+					 <option ng-repeat="product in productbacklogList">{{ product.productbacklog_name }}</option>
+					 </select>
+				</div>
+				<div class="form-group">
+					 <label>Description</label>
+					 <textarea  class="form-control" id="newtask-desc" ng-model="newTask.description" required name="description"></textarea>
+				</div>
+			</div>
+			<div class="newtask-right  col-md-5">
+				<div class="form-group col-md-6">
+					<label>Estimation</label>
+					<input type="number" id="estimation"  class="form-control" ng-model="newTask.estimation" required name="estimation"/>
+					<small ng-show="newtaskform.estimation.$error.number">estimation should be a number</small>
+				</div>
+				<div class="clear"></div>
+				<div class="form-group col-md-6">
+					<label>Remaining</label><br>
+					<input type="number" id="remaining"  class="form-control" ng-model="newTask.remaining" required name="remaining"/>
+					<small ng-show="newtaskform.remaining.$error.number">Remaining should be a number</small>
+				</div>
+				<div class="clear"></div>
+				<div class="form-group col-md-6">
+					<label>State</label>
+					<select id="state"  class="form-control" value="TODO" ng-model="newTask.state" required name="todo">
+					<option>Active</option>
+					<option>InActive</option>
+					</select>
+				</div>
+				<div class="clear"></div>
+				<div class="form-group">
+					<label>Assigned to</label>
+					<select id="Assignedto"  class="form-control" ng-model="newTask.assigned_to" required name="assigned">
+					<option ng-repeat="user in users">{{user}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="buttons">
+			<input type="button" value="Save" class="btn btn-primary" ng-click="addNewTask()" ng-disabled="newtaskform.name.$invalid || newtaskform.description.$invalid || newtaskform.estimation.$invalid || newtaskform.remaining.$invalid || newtaskform.assigned.$invalid || newtaskform.todo.$invalid || newtaskform.productbacklog.$invalid">
+			 <input type="reset" value="Revert Changes" class="btn btn-warning">
+		</div>
+	</form>
+</div>
